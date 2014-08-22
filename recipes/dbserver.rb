@@ -16,7 +16,7 @@ connection_info = {:host => "localhost",
                   :port => node['postgresql']['config']['port'],
                   :username => 'postgres'}
 
-dbname = "#{node['rails_infrastructure']['app_db_user']['name']}_#{node['rails_infrastructure']['env']}"
+dbname = "#{node['rails_infrastructure']['app_db_user']['name']}_#{node['rails_infrastructure']['environment']}"
 
 postgresql_database dbname do
   connection connection_info
