@@ -1,7 +1,9 @@
-default['rails_infrastructure']['app_db_user']['name'] = 'foo'
+default['rails_infrastructure']['app_db_user']['name'] = 'microblog_ruby'
 # TODO: Get password out of cookbook
 default['rails_infrastructure']['app_db_user']['password'] = 'foobar'
-default['rails_infrastructure']['app_db_user']['env'] = 'test'
+
+# TODO: Set this with the node's environment
+default['rails_infrastructure']['environment'] = 'test'
 
 
 default['rvm']['default_ruby'] = 'ruby-2.0.0-p481'
