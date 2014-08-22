@@ -1,0 +1,28 @@
+upstream unicorn_servers {
+
+    # Add a list of your application servers
+    # Each server defined on its own line
+    # Example:
+    # server IP.ADDR:PORT fail_timeout=0;
+    server <%=@localip%>:8080 fail_timeout=0;
+
+    # server 10.128.241.136:8080 fail_timeout=0;
+    # server 10.128.241.137:8080 fail_timeout=0;
+
+}
+
+server {
+
+    # Port to listen on
+    listen 80;
+
+    location / {
+        # Set proxy headers
+        proxy_set_header        Host $host;
+        proxy_set_header        X-Real-IP $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        proxy_pass http://unicorn_servers;
+    }
+
+}
