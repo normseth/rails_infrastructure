@@ -1,7 +1,0 @@
-scratch:
-  :roles:
-    - load_balancer
-    - app_server
-    - dbserver
-  :server_id: 101
-
