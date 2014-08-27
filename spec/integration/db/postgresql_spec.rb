@@ -1,4 +1,4 @@
-require_relative 'spec_helper_exec'
+require 'spec_helper'
 
 # OS user exists
 # Packages installed
