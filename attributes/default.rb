@@ -1,4 +1,4 @@
-default['rails_infrastructure']['app']['name'] = 'microblog_ruby'
+default["rails_infrastructure"]["app"]["name"] = "microblog_ruby"
 default['rails_infrastructure']['dbadapter'] = 'postgresql'
 default['rails_infrastructure']['dbhost'] = 'localhost'
 default['rails_infrastructure']['deployment']['dir'] = '/usr/local/deploy'
