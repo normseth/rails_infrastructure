@@ -24,7 +24,7 @@ application node['rails_infrastructure']['app']['name'] do
   repository node['rails_infrastructure']['app']['repo']
   deploy_key git_creds['microblog_ruby_deploy_key']
   #revision
-  environment_name node.chef_environment
+  environment_name node['chef_environment']
   migrate true
   migration_command 'bundle exec rake db:migrate'
   rollback_on_error true
