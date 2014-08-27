@@ -1,18 +1,8 @@
 include_recipe 'rails_infrastructure::common'
-
-# Directly invoking packages rather than using community postgresql cookbook.
-# That one seems more complex than needed and has several caveats in the readme.
-# TODO: Revisit decision to use package directly for postgresql install.
-
-# %w[ 'postgresql' 'libpq-dev' ].each do |pkg|
-#   package pkg
-# end
-# chef_gem 'pg'
-
 include_recipe 'postgresql::server'
 include_recipe 'postgresql::ruby'
 
-connection_info = {:host => "localhost",
+connection_info = {:host => node['rails_infrastructure']['dbhost'],
                   :port => node['postgresql']['config']['port'],
                   :username => 'postgres'}
 
