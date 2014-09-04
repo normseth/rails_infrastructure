@@ -1,0 +1,24 @@
+---
+driver:
+  name: ssh
+  hostname: <%= ENV['TARGET_IP'] %>
+  username: <%= ENV['TARGET_USERNAME'] %>
+  ssh_key: <%= ENV['TARGET_SSH_KEY'] %>
+
+provisioner:
+  name: chef_zero
+  data_bags_path: ../../chef-repo/data_bags
+  encrypted_data_bag_secret_key_path: ../../chef-repo/.chef/insecure_encrypted_data_bag_secret
+  environments_path: ../../chef-repo/environments
+  require_chef_omnibus: true
+
+platforms:
+  - name: ubuntu-12.04
+
+suites:
+  - name: default
+    run_list: recipe[rails_infrastructure]
+    provisioner:
+      client_rb:
+        environment: test
+    attributes:
