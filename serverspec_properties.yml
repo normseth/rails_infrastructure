@@ -1,6 +1,0 @@
-scratch:
-  :roles:
-    - lb
-    - app
-    - db
-  :server_id: 101
