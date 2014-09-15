@@ -1,0 +1,34 @@
+---
+driver:
+  name: ec2
+  aws_access_key: <%= ENV['AWS_ACCESS_KEY'] %>
+  aws_secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  aws_ssh_key_id: <%= ENV['AWS_SSH_KEY_ID'] %>
+  ssh_key: <%= ENV['SSH_KEY'] %>
+  security_group_ids: [ "<%=ENV['SECURITY_GROUP_ID']%>" ]
+  region: <%= ENV['REGION'] %>
+  subnet_id: <%= ENV['SUBNET_ID'] %>
+  ssh_timeout: 10
+  ssh_retries: 5
+  associate_public_ip: true
+  require_chef_omnibus: true
+
+provisioner:
+  name: chef_zero
+  data_bags_path: ../../chef-repo/data_bags
+  encrypted_data_bag_secret_key_path: ../../chef-repo/.chef/insecure_encrypted_data_bag_secret
+  environments_path: ../../chef-repo/environments
+
+platforms:
+  - name: ubuntu-12.04
+    driver:
+      image_id: ami-d9a1e6e9
+      username: ubuntu
+
+suites:
+  - name: default
+    run_list: recipe[rails_infrastructure]
+    provisioner:
+      client_rb:
+        environment: test
+    attributes:
