@@ -11,8 +11,6 @@ driver:
   subnet_id: <%= ENV['SUBNET_ID'] %>
   ssh_timeout: 10
   ssh_retries: 5
-  associate_public_ip: true
-  require_chef_omnibus: true
 
 provisioner:
   name: chef_zero
@@ -25,6 +23,8 @@ platforms:
     driver:
       image_id: ami-d9a1e6e9
       username: ubuntu
+      associate_public_ip: true
+      require_chef_omnibus: true
 
 suites:
   - name: default
