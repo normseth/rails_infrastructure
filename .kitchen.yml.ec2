@@ -23,7 +23,6 @@ platforms:
     driver:
       image_id: ami-d9a1e6e9
       username: ubuntu
-      associate_public_ip: true
       require_chef_omnibus: true
 
 suites:
