@@ -5,7 +5,7 @@ driver:
   aws_secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
   aws_ssh_key_id: <%= ENV['AWS_SSH_KEY_ID'] %>
   ssh_key: <%= ENV['SSH_KEY'] %>
-  security_group_ids: [ "sg-sg-048f1861" ]
+  #security_group_ids: [ "sg-sg-048f1861" ]
   region: <%= ENV['REGION'] %>
   availability_zone: <%= ENV['AVAILABILITY_ZONE'] %>
   subnet_id: <%= ENV['SUBNET_ID'] %>
