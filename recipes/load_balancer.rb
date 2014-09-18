@@ -3,9 +3,7 @@ include_recipe 'nginx'
 
 # TODO: Fix the following.  Pretty fragile, although it works correctly with my Vagrant and EC2 setups.
 
-log "#{node['vagrant']}"
-
-if node['vagrant'] then
+if node['current_user'] == 'vagrant' then
   preferred_local_ip = node['network']['interfaces']['eth1']['addresses'].keys[1]
 else
   preferred_local_ip = node['ipaddress']
