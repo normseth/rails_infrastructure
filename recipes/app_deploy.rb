@@ -6,15 +6,14 @@ directory node['rails_infrastructure']['deployment']['dir'] do
   recursive true
 end
 
-git_creds = encrypted_data_bag_item_for_environment('creds', 'git_creds')
-db_creds = encrypted_data_bag_item_for_environment('creds', 'db_creds')
+microblog_creds = encrypted_data_bag_item_for_environment('creds', 'microblog_creds')
 
 # Unable to pass the following directly to database sub-resource for some reason
 dbadapter = node['rails_infrastructure']['dbadapter']
 dbname = "#{node['rails_infrastructure']['app']['name']}_#{node.chef_environment}"
 dbhost = node['rails_infrastructure']['dbhost']
-dbusername = db_creds['microblog_ruby_dbuser']
-dbuserpass = db_creds['microblog_ruby_dbpass']
+dbusername = microblog_creds['microblog_dbuser']
+dbuserpass = microblog_creds['microblog_dbpass']
 
 application node['rails_infrastructure']['app']['name'] do
 
@@ -22,7 +21,7 @@ application node['rails_infrastructure']['app']['name'] do
   owner node['rails_infrastructure']['owner']
   group node['rails_infrastructure']['group']
   repository node['rails_infrastructure']['app']['repo']
-  deploy_key git_creds['microblog_ruby_deploy_key']
+  deploy_key microblog_creds['jenkins_github_private_key']
   #revision
   environment_name node.chef_environment
   migrate true

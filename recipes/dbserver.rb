@@ -13,10 +13,10 @@ postgresql_database dbname do
   action :create
 end
 
-db_creds = encrypted_data_bag_item_for_environment('creds', 'db_creds')
-postgresql_database_user db_creds['microblog_ruby_dbuser'] do
+microblog_creds = encrypted_data_bag_item_for_environment('creds', 'microblog_creds')
+postgresql_database_user microblog_creds['microblog_dbuser'] do
   connection connection_info
-  password db_creds['microblog_ruby_dbpass']
+  password microblog_creds['microblog_dbpass']
   database_name dbname
   action [ :create, :grant ]
 end
