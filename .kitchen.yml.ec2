@@ -16,7 +16,7 @@ driver:
 provisioner:
   name: chef_zero
   data_bags_path: ../../chef-repo/data_bags
-  encrypted_data_bag_secret_key_path: ../../chef-repo/.chef/insecure_encrypted_data_bag_secret
+  encrypted_data_bag_secret_key_path: <%= ENV['ENCRYPTED_DATA_BAG_SECRET_KEY_PATH'] %>
   environments_path: ../../chef-repo/environments
 
 platforms:
