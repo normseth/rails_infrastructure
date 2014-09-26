@@ -1,3 +1,5 @@
+override['apt']['compile_time_update'] = true
+
 default['rails_infrastructure']['app']['name'] = 'microblog_ruby'
 default['rails_infrastructure']['dbadapter'] = 'postgresql'
 default['rails_infrastructure']['dbhost'] = 'localhost'
